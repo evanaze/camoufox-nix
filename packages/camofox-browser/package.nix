@@ -37,10 +37,7 @@ buildNpmPackage {
   npmDepsHash = "sha256-PZR+da/OKl425p4TKnDD4imhEZQdWiSamViOE27Q3wQ=";
 
   makeCacheWritable = true;
-  npmFlags = [
-    "--ignore-scripts"
-    "--omit=optional"
-  ];
+  npmFlags = [ ];
   dontNpmBuild = true;
 
   nativeBuildInputs = [ makeWrapper ];
@@ -55,7 +52,7 @@ buildNpmPackage {
 
     mkdir -p $out/{bin,lib/${pname}}
 
-    npm prune --omit=dev --omit=optional
+    npm prune --omit=dev
     ${camoufoxEnv.patchCamoufoxJs "node_modules/camoufox-js"}
 
     cp -r dist bin node_modules package.json README.md CHANGELOG.md LICENSE $out/lib/${pname}/
