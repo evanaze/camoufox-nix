@@ -51,22 +51,6 @@ let
     inherit camoufox;
   };
 
-  camoufox-mcp-server = pkgs.writeShellApplication {
-    name = "camoufox-mcp-server";
-    runtimeInputs = [ pkgs.nodejs ];
-    text = ''
-      echo "whit3rabbit/camoufox-mcp source: https://github.com/whit3rabbit/camoufox-mcp"
-      echo "npm package: camoufox-mcp-server@1.5.0"
-      echo "Full npm dependency packaging still TODO; redf0x1 camofox-mcp is packaged as .#camofox-mcp."
-      exit 1
-    '';
-    meta = {
-      description = "whit3rabbit camoufox-mcp packaging placeholder";
-      homepage = "https://github.com/whit3rabbit/camoufox-mcp";
-      mainProgram = "camoufox-mcp-server";
-    };
-  };
-
   foxbridge = pkgs.callPackage ./foxbridge/package.nix { };
   vulpineos = pkgs.callPackage ./vulpineos/package.nix { };
   vulpineos-camoufox-notes = pkgs.callPackage ./vulpineos-camoufox-notes/default.nix { };
@@ -81,7 +65,6 @@ in
     jo-camofox-browser
     camofox-mcp
     camoufox-js
-    camoufox-mcp-server
     vulpineos-camoufox-notes
     cloverlabs-camoufox
     camoufox-browser-cli

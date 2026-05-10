@@ -48,6 +48,7 @@ buildNpmPackage {
     mkdir -p $out/{bin,lib/${pname}}
 
     npm prune --omit=dev
+    ${camoufoxEnv.patchCamoufoxJs "node_modules/camoufox-js"}
 
     cp -r dist node_modules package.json README.md LICENSE $out/lib/${pname}/
 
@@ -70,7 +71,7 @@ buildNpmPackage {
     changelog = "https://github.com/redf0x1/camofox-mcp/releases/tag/v${version}";
     license = lib.licenses.mit;
     sourceProvenance = with lib.sourceTypes; [ binaryBytecode ];
-    platforms = lib.platforms.all;
+    platforms = lib.platforms.linux;
     mainProgram = "camofox-mcp";
   };
 }

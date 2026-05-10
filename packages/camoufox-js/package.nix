@@ -23,9 +23,6 @@ let
         hash = "sha256-4/ni5Ne2N6/A3gGwwb6hqxTJRwvweCH9z6hQ/lJfOYg=";
       }
     } -C $out --strip-components=1
-    substituteInPlace $out/package.json \
-      --replace-fail '"xml2js": "^0.6.2"' '"xml2js": "^0.6.2", "playwright-core": "^1.53.1"'
-    sed -i '/"playwright-core": "\^1.53.1",/d' $out/package.json
     cp ${./package-lock.json} $out/package-lock.json
   '';
 in
@@ -76,7 +73,7 @@ buildNpmPackage {
     changelog = "https://www.npmjs.com/package/camoufox-js/v/${version}";
     license = lib.licenses.mit;
     sourceProvenance = with lib.sourceTypes; [ binaryBytecode ];
-    platforms = lib.platforms.all;
+    platforms = lib.platforms.linux;
     mainProgram = "camoufox-js";
   };
 }

@@ -20,8 +20,8 @@ buildNpmPackage rec {
   src = fetchFromGitHub {
     owner = "maximoffua";
     repo = "camofox-browser";
-    rev = "e94253eebc329c8328c693ee31b7fb36dbe4337f";
-    hash = "sha256-0XBoSUj3tE2CMw5HNW8H9r5WkWTlwMIBV7x8RQN0F04=";
+    rev = "a7b36ef1f26cfd0ea06e23c1b353454dbc99195d";
+    hash = "sha256-25mFKgMz+5hpzAK62G2jCNKAIPSQZzGGrNfFzAJJwzQ=";
   };
 
   npmDepsHash = "sha256-Ps5gZnX9AInbGSgkas+bsvx5f//LkHWpy96XZ/JvUm4=";
@@ -89,7 +89,7 @@ buildNpmPackage rec {
     homepage = "https://github.com/jo-inc/camofox-browser";
     license = lib.licenses.mit;
     sourceProvenance = with lib.sourceTypes; [ fromSource ];
-    platforms = lib.platforms.all;
+    platforms = lib.platforms.linux;
     mainProgram = "jo-camofox-browser";
   };
 }

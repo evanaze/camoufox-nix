@@ -72,7 +72,7 @@ buildNpmPackage {
     changelog = "https://github.com/redf0x1/camofox-browser/releases/tag/v${version}";
     license = lib.licenses.mit;
     sourceProvenance = with lib.sourceTypes; [ binaryBytecode ];
-    platforms = lib.platforms.all;
+    platforms = lib.platforms.linux;
     mainProgram = "camofox-browser";
   };
 }

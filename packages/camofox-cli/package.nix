@@ -93,7 +93,7 @@ buildNpmPackage {
     changelog = "https://github.com/Bin-Huang/camoufox-cli/releases";
     license = lib.licenses.mit;
     sourceProvenance = with lib.sourceTypes; [ binaryBytecode ];
-    platforms = lib.platforms.all;
+    platforms = lib.platforms.linux;
     mainProgram = pname;
   };
 }
