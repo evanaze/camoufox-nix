@@ -23,6 +23,8 @@ let
         hash = "sha256-4/ni5Ne2N6/A3gGwwb6hqxTJRwvweCH9z6hQ/lJfOYg=";
       }
     } -C $out --strip-components=1
+    substituteInPlace $out/package.json \
+      --replace-fail '"xml2js": "^0.6.2"' '"xml2js": "^0.6.2", "playwright-core": "^1.53.1"'
     cp ${./package-lock.json} $out/package-lock.json
   '';
 in
@@ -50,7 +52,9 @@ buildNpmPackage {
 
     mkdir -p $out/{bin,lib/${pname}}
 
-    npm prune --omit=dev
+    # Keep the installed dependency tree intact: the CLI eagerly imports modules
+    # that use playwright-core even for `path`/`fetch`, and `npm prune --omit=dev`
+    # currently removes it from this upstream package despite the lockfile entry.
     npm rebuild better-sqlite3 --build-from-source --offline
     find node_modules/better-sqlite3/build/Release -mindepth 1 \
       ! -name better_sqlite3.node \
