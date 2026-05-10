@@ -5,6 +5,7 @@
   fetchFromGitHub,
   fetchurl,
   runCommand,
+  unstableGitUpdater,
   camoufoxSource ? {
     owner = "daijro";
     repo = "camoufox";
@@ -296,6 +297,9 @@ let
         configureFlags = builtins.filter (flag: flag != "--with-system-nss") old.configureFlags;
         passthru = old.passthru // {
           inherit version;
+          updateScript = unstableGitUpdater {
+            url = "https://github.com/${sourceName}.git";
+          };
         };
         src = upstreamSrc;
       });
@@ -306,6 +310,9 @@ runCommand "camoufox-${version}"
     inherit version;
     passthru = camoufox-unwrapped.passthru // {
       unwrapped = camoufox-unwrapped;
+      updateScript = unstableGitUpdater {
+        url = "https://github.com/${sourceName}.git";
+      };
     };
     meta = camoufox-unwrapped.meta;
   }

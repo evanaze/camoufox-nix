@@ -20,8 +20,8 @@ buildNpmPackage rec {
   src = fetchFromGitHub {
     owner = "maximoffua";
     repo = "camofox-browser";
-    rev = "13faabc9bc15bd5e0f6ebc265b2ac3cd9cef0e06";
-    hash = "sha256-pV+fqq0H2DRMBOcDNKdUOpxIhZzhHg1Db4WH9lbBCV4=";
+    rev = "e94253eebc329c8328c693ee31b7fb36dbe4337f";
+    hash = "sha256-0XBoSUj3tE2CMw5HNW8H9r5WkWTlwMIBV7x8RQN0F04=";
   };
 
   npmDepsHash = "sha256-Ps5gZnX9AInbGSgkas+bsvx5f//LkHWpy96XZ/JvUm4=";
